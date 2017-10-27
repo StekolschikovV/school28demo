@@ -40,57 +40,30 @@ export default class MenuScreen extends React.Component {
     }
 
     componentDidMount() {
-
         AsyncStorage.getItem('language')
-            .then(res => {
-                if (res == null) {
-                    AsyncStorage.setItem('language', 'RU')
-                    this.setState({
-                        language: 'RU'
-                    })
-                } else {
-                    this.setState({
-                        language: res
-                    })
-                }
-            })
-
-        AsyncStorage.getItem('data')
-            .then(res => {
+        .then(res => {
+            if (res == null) {
+                AsyncStorage.setItem('language', 'RU')
                 this.setState({
-                    data: JSON.parse(res)
+                    language: 'RU'
                 })
-            })
-            .then(res => {
-                this.showTimetable()
-            });
-
-        AsyncStorage.getItem('user')
-            .then(res => {
+            } else {
                 this.setState({
-                    user: JSON.parse(res)
+                    language: res
                 })
-            })
-            .then(res => {
-                this.showTimetable()
-            });
-
-        AsyncStorage.getItem('class')
-            .then(res => {
-                this.setState({
-                    class: JSON.parse(res)
-                })
-            })
-            .then(res => {
-                this.showTimetable()
-            });
+            }
+        })
 
     }
 
     render() {
+
         return (
             <View style={styles.root}>
 
+
+
+                {/* <TopBar text={this.state.language} t={this} showBTN={true} /> */}
                 <TopBar text={this.state.languageTexts.timetable[`${this.state.language}`]} t={this} showBTN={true} />
 
                 <View style={styles.topDataControls}>
@@ -112,18 +85,18 @@ export default class MenuScreen extends React.Component {
                 <ScrollView style={styles.container}>
 
                     <View>
-                        <Text style={styles.el}>1. {this.state.l1}</Text>
-                        <Text style={styles.el}>2. {this.state.l2}</Text>
-                        <Text style={styles.el}>3. {this.state.l3}</Text>
-                        <Text style={styles.el}>4. {this.state.l4}</Text>
-                        <Text style={styles.el}>5. {this.state.l5}</Text>
-                        <Text style={styles.el}>6. {this.state.l6}</Text>
-                        <Text style={styles.el}>7. {this.state.l7}</Text>
-                        <Text style={styles.el}>8. {this.state.l8}</Text>
-                        <Text style={styles.el}>9. {this.state.l9}</Text>
-                        <Text style={styles.el}>10. {this.state.l10}</Text>
-                        <Text style={styles.el}>11. {this.state.l11}</Text>
-                        <Text style={styles.el}>12. {this.state.l12}</Text>
+                        <Text style={styles.el}>1. Русский язык</Text>
+                        <Text style={styles.el}>2. Русская литература</Text>
+                        <Text style={styles.el}>3. Математика</Text>
+                        <Text style={styles.el}>4. Физика</Text>
+                        <Text style={styles.el}>5. Физкультура</Text>
+                        <Text style={styles.el}>6. </Text>
+                        <Text style={styles.el}>7. </Text>
+                        <Text style={styles.el}>8. </Text>
+                        <Text style={styles.el}>9. </Text>
+                        <Text style={styles.el}>10. </Text>
+                        <Text style={styles.el}>11. </Text>
+                        <Text style={styles.el}>12. </Text>
                     </View>
 
                 </ScrollView>
@@ -136,69 +109,23 @@ export default class MenuScreen extends React.Component {
         this.setState({
             dateNow: this.state.dateNow - 86400000
         })
-        setTimeout(() => {
-            this.showTimetable()
-        }, 50)
+
+
+
     }
 
     clickRight() {
         this.setState({
             dateNow: this.state.dateNow + 86400000
         })
-        setTimeout(() => {
-            this.showTimetable()
-        }, 50)
+
     }
 
     getTime() {
         return `${new Date(this.state.dateNow).getDate()}/${new Date(this.state.dateNow).getMonth()}/${new Date(this.state.dateNow).getFullYear()}`
     }
 
-    showTimetable() {
 
-        let l1 = ''
-        let l2 = ''
-        let l3 = ''
-        let l4 = ''
-        let l5 = ''
-        let l6 = ''
-        let l7 = ''
-        let l8 = ''
-        let l9 = ''
-        let l10 = ''
-        let l11 = ''
-        let l12 = ''
-
-        if (this.state.class[this.state.dateNow]) {
-            l1 = this.state.class[this.state.dateNow].lesson[1]
-            l2 = this.state.class[this.state.dateNow].lesson[2]
-            l3 = this.state.class[this.state.dateNow].lesson[3]
-            l4 = this.state.class[this.state.dateNow].lesson[4]
-            l5 = this.state.class[this.state.dateNow].lesson[5]
-            l6 = this.state.class[this.state.dateNow].lesson[6]
-            l7 = this.state.class[this.state.dateNow].lesson[7]
-            l8 = this.state.class[this.state.dateNow].lesson[8]
-            l9 = this.state.class[this.state.dateNow].lesson[9]
-            l10 = this.state.class[this.state.dateNow].lesson[10]
-            l11 = this.state.class[this.state.dateNow].lesson[11]
-            l12 = this.state.class[this.state.dateNow].lesson[12]
-        }
-
-        this.setState({
-            l1: l1,
-            l2: l2,
-            l3: l3,
-            l4: l4,
-            l5: l5,
-            l6: l6,
-            l7: l7,
-            l8: l8,
-            l9: l9,
-            l10: l10,
-            l11: l11,
-            l12: l12
-        })
-    }
 
 }
 

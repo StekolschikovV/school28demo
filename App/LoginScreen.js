@@ -146,12 +146,18 @@ export default class LoginScreen extends React.Component {
     }
     
     verification() {
-        if(this.state.inputValue){
-            AsyncStorage.setItem('key', this.state.inputValue)
-            this.props.navigation.navigate('LoadData')
-        } else {
-            alert(this.state.languageTexts.codeEmpty[`${this.state.language}`])
-        }
+
+        this.props.navigation.navigate('Menu')
+        
+
+
+
+        // if(this.state.inputValue){
+        //     AsyncStorage.setItem('key', this.state.inputValue)
+        //     this.props.navigation.navigate('LoadData')
+        // } else {
+        //     alert(this.state.languageTexts.codeEmpty[`${this.state.language}`])
+        // }
     }
 
 }

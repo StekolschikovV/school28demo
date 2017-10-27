@@ -9,16 +9,22 @@ import MenuScreen from './App/MenuScreen'
 import TimetableScreen from './App/TimetableScreen'
 import TeachersScreen from './App/TeachersScreen'
 import ClassmatesScreen from './App/ClassmatesScreen'
+import EstimatesScreen from './App/EstimatesScreen'
+import News from './App/News'
+
 
 const Scholl28 = StackNavigator(
   {
     Login: { screen: LoginScreen },
     HowGetCode: { screen: HowGetCodeScreen },
-    LoadData: { screen: LoadDataScreen },
+    // LoadData: { screen: LoadDataScreen },
     Menu: { screen: MenuScreen },
     Timetable: { screen: TimetableScreen},
     Teachers: { screen: TeachersScreen},
     Classmates: { screen: ClassmatesScreen},
+    Estimates: { screen: EstimatesScreen},
+    News: { screen: News},
+
   },
   {
     headerMode: 'none'

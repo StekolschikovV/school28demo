@@ -1,5 +1,14 @@
 {
   "expo": {
-    "sdkVersion": "21.0.0"
-  }
+    "name": "school28demo",
+    "icon": "./ic_launcher.png",
+    "version": "2.0.0",
+    "sdkVersion": "21.0.0",
+    "android": {
+      "package": "com.stekolschikov.school28demo"
+    },
+    "loading": {
+      "icon":"./ic_launcher.png"
+    }
+   }
 }

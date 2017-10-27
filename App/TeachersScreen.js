@@ -26,66 +26,50 @@ export default class ClassmatesScreen extends React.Component {
     }
 
     componentDidMount() {
-
         AsyncStorage.getItem('language')
-            .then(res => {
-                if (res == null) {
-                    AsyncStorage.setItem('language', 'RU')
-                    this.setState({
-                        language: 'RU'
-                    })
-                } else {
-                    this.setState({
-                        language: res
-                    })
-                }
-            })
-
-        AsyncStorage.getItem('data')
-            .then(res => {
+        .then(res => {
+            if (res == null) {
+                AsyncStorage.setItem('language', 'RU')
                 this.setState({
-                    data: JSON.parse(res)
+                    language: 'RU'
                 })
-            })
-
-        AsyncStorage.getItem('user')
-            .then(res => {
+            } else {
                 this.setState({
-                    user: JSON.parse(res)
+                    language: res
                 })
-            })
-
-        setTimeout(() => {
-            this.setState({
-                teachers_in_class: this.state.data['teachers'][this.state.user['class']]
-            })
-        }, 100)
+            }
+        })
 
     }
 
     render() {
 
-        let teachers = this.state.teachers_in_class.map((e, i) => {
-            return (
-                <View style={styles.el} key={i}>
-                    <Image style={styles.photo} source={require('../img/teachet_photo.jpeg')}></Image>
-                    <View style={styles.info}>
-                        <Text style={styles.name}>{e.name}</Text>
-                        <Text style={styles.subject}>{e.subject}</Text>
-                        <Text style={styles.email}>{e.email}</Text>
-                        <Text style={styles.phone}>{e.phone}</Text>
-                    </View>
-                </View>
-            )
-        })
-
         return (
             <View style={styles.root}>
+
+
 
                 <TopBar text={this.state.languageTexts.title_teachers[`${this.state.language}`]} t={this} showBTN={true} />
 
                 <ScrollView style={styles.container}>
-                    {teachers}
+                    <View style={styles.el}>
+                        <Image style={styles.photo} source={require('../img/teachet_photo.jpeg')}></Image>
+                        <View style={styles.info}>
+                            <Text style={styles.name}>Белоусова Дарья</Text>
+                            <Text style={styles.subject}>математика</Text>
+                            <Text style={styles.email}>email@email.com</Text>
+                            <Text style={styles.phone}>+380000000000</Text>
+                        </View>
+                    </View>
+                    <View style={styles.el}>
+                        <Image style={styles.photo} source={require('../img/teachet_photo.jpeg')}></Image>
+                        <View style={styles.info}>
+                            <Text style={styles.name}>Белоусова Дарья</Text>
+                            <Text style={styles.subject}>математика</Text>
+                            <Text style={styles.email}>email@email.com</Text>
+                            <Text style={styles.phone}>+380000000000</Text>
+                        </View>
+                    </View>
                 </ScrollView>
 
             </View>

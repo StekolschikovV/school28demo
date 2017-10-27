@@ -79,6 +79,7 @@ export default class MenuScreen extends React.Component {
 
                 <ScrollView style={styles.container}>
 
+
                     <View style={styles.containerInner}>
 
                         <TouchableOpacity style={styles.el} onPress={() => this.props.navigation.navigate('Timetable')}>
@@ -87,7 +88,7 @@ export default class MenuScreen extends React.Component {
                             </Text>
                         </TouchableOpacity>
                         
-                        <TouchableOpacity style={styles.el}>
+                        <TouchableOpacity style={styles.el} onPress={() => this.props.navigation.navigate('Estimates')}>
                             <Text style={styles.containerInnerText}>
                                 {this.state.languageTexts.estimates[`${this.state.language}`]}
                             </Text>
@@ -105,17 +106,17 @@ export default class MenuScreen extends React.Component {
                             </Text>
                         </TouchableOpacity>
 
-                        <View style={styles.el}>
+                        <TouchableOpacity style={styles.el}   onPress={() => this.props.navigation.navigate('News')}>
                             <Text style={styles.containerInnerText}>
                                 {this.state.languageTexts.classNews[`${this.state.language}`]}
                             </Text>
-                        </View>
+                        </TouchableOpacity>
 
-                        <View style={styles.el}>
+                        <TouchableOpacity style={styles.el}   onPress={() => this.props.navigation.navigate('News')}>
                             <Text style={styles.containerInnerText}>
                                 {this.state.languageTexts.schoolNews[`${this.state.language}`]}
                             </Text>
-                        </View>
+                        </TouchableOpacity>
 
                     </View>
 
